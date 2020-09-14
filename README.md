@@ -7,3 +7,5 @@ objectToQueryString({ page: '1', size: '2kg', key: undefined });
 ```
 ## clipboard
 点击复制功能
+## mostFrequent
+统计数组中出现次数最多元素
