@@ -7,3 +7,5 @@
 统计数组中出现次数最多元素
 ## reducedFilter
 过滤出对象自定义字段
+## frequencies
+统计数组字符出现次数
