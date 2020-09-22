@@ -1,5 +1,5 @@
 # 一些常用的代码片段
-## 参考链接[https://www.30secondsofcode.org/js/s/omit-by]
+## [更多函数](https://www.30secondsofcode.org/js/s/omit-by)
 ## objectToQueryString
 把object转换成QueryString格式
 ## clipboard
