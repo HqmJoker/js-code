@@ -10,3 +10,6 @@
 过滤出对象自定义字段
 ## frequencies
 统计数组字符出现次数
+## filterObject
+过滤出对象符合条件项
+
