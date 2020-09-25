@@ -14,3 +14,5 @@
 过滤出对象符合条件项
 ## omit
 移除对象中指定key的项
+## longestCommonPrefix
+计算数组字符串中最长公共字符串
