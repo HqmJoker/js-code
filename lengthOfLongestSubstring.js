@@ -22,3 +22,23 @@ var lengthOfLongestSubstring = function(s) {
     }
     return max;
 };
+
+// 优化代码1.0版本
+var lengthOfLongestSubstring = function(s) {
+    if(!s.length){
+        return 0;
+    }
+    let arr = "";
+    let max = 0;
+    for(let i=0; i<s.length; i++){
+        let index = arr.indexOf(s[i])
+        if(index !== -1) {
+            arr = arr.slice(index+1)
+        }
+        arr += s[i];
+        if(max<arr.length){
+            max = arr.length
+        }
+    }
+    return max;
+};
