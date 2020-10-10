@@ -22,3 +22,5 @@
 增加翻转字符串函数
 ## lengthOfLongestSubstring
 从字符串中找出一个最长的不包含重复字符的子字符串，计算该最长子字符串的长度
+## removeDuplicates
+删除字符串中的所有相邻重复项
