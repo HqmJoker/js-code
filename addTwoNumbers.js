@@ -35,3 +35,25 @@ var addTwoNumbers = function(l1, l2) {
     }
     return result
 };
+
+// v2.0重新梳理思路，优化代码，但是性能变低
+var addTwoNumbers = function(l1, l2) {
+    let isAddOne = 0;
+    let result = new ListNode()
+    let p = result
+    do{
+        let val1 = l1 !== null? l1.val : 0;
+        let val2 = l2 !== null? l2.val : 0;
+        let num = val1 + val2 + isAddOne;
+        isAddOne = num>9?1:0;
+        p.next = new ListNode(num%10)
+        p = p.next
+        if(l1){
+            l1 = l1.next
+        }
+        if(l2){
+            l2 = l2.next
+        }
+    }while(isAddOne || l1 || l2)
+    return result.next
+};
