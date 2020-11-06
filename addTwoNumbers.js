@@ -11,50 +11,27 @@
  * @return {ListNode}
  */
 var addTwoNumbers = function(l1, l2) {
-
-    let maxLen = Math.max(l1.getLength, l2.getLength)
-    console.log(maxLen)
-    let result = 0;
-    for(let i in maxLen){
-        let count = 0;
-        console.log(i)
-    }
-};
-
-function List(){
-    let Node = function(val) {
-        this.val = val;
-        this.next = null;
-    }
-    let head = null;
-    let length = 0;
-    this.append = function(val){
-        let node = new Node(val)
-        let tempPoint = head;
-        if(!head){
-            head = node;
-        }else{
-            while(tempPoint.next){
-                tempPoint = tempPoint.next;
-            }
-            tempPoint.next = node;
+    let val1 = l1.val ? l1.val:0;
+    let val2 = l2.val ? l2.val:0;
+    let currentNum = (l1.val + l2.val) % 10;
+    let isAddOne = Math.floor((l1.val + l2.val) / 10);
+    let result = new ListNode(currentNum);
+    let p = result
+    let i=0;
+    while(isAddOne || (l1 && l1.next) || (l2 && l2.next)){
+        if (l1) {
+            l1 = l1.next;
         }
-        length++;
+        if (l2) {
+            l2 = l2.next;
+        }
+        val1 = l1 !== null ? l1.val:0;
+        val2 = l2 !== null ? l2.val:0;
+        currentNum = (val1 + val2 + isAddOne) % 10;
+        isAddOne = Math.floor((val1 + val2 + isAddOne) / 10);
+        p.next = new ListNode(currentNum);
+        p = p.next;
+        i++;
     }
-    this.getLength = function(){
-        return length;
-    }
-}
-
-let l1 = new List()
-l1.append(2)
-l1.append(4)
-l1.append(3)
-let l2 = new List()
-l2.append(5)
-l2.append(6)
-l2.append(4)
-    console.log(l1.getLength())
-    console.log(l2.getLength())
-
-addTwoNumbers(l1, l2)
+    return result
+};
