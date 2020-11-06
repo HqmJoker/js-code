@@ -39,12 +39,15 @@ var addTwoNumbers = function(l1, l2) {
 // v2.0重新梳理思路，优化代码，但是性能变低
 var addTwoNumbers = function(l1, l2) {
     let isAddOne = 0;
+    let val1 = 0;
+    let val2 = 0;
+    let num = 0;
     let result = new ListNode()
     let p = result
     do{
-        let val1 = l1 !== null? l1.val : 0;
-        let val2 = l2 !== null? l2.val : 0;
-        let num = val1 + val2 + isAddOne;
+        val1 = l1 !== null? l1.val : 0;
+        val2 = l2 !== null? l2.val : 0;
+        num = val1 + val2 + isAddOne;
         isAddOne = num>9?1:0;
         p.next = new ListNode(num%10)
         p = p.next
