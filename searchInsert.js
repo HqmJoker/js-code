@@ -13,3 +13,15 @@ var searchInsert = function(nums, target) {
         }
     }
 };
+// 空间换时间
+var searchInsert = function(nums, target) {
+    let len = nums.length
+    if(nums[len - 1] < target){
+        return len;
+    }
+    for(let i=0; i<len; i++){
+        if(target<=nums[i]){
+            return i;
+        }
+    }
+};
