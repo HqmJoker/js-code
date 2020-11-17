@@ -15,3 +15,18 @@ var maxProfit = function(prices) {
     }
     return profit
 };
+
+// 优化2.0 增加判断过滤，提升效率，当前一天价格大于后一天价格时，直接计算从后一天开始计算价格，因为这样计算出来的值，后一天肯定比前一天大
+var maxProfit = function(prices) {
+    let profit = 0;
+    for(let i=0; i<prices.length; i++){
+        if(prices[i] < prices[i+1]){
+            for(let j=i+1; j<prices.length; j++){
+                if(prices[i]<prices[j] && prices[j]-prices[i]>profit){
+                    profit = prices[j]-prices[i];
+                }
+            }
+        }
+    }
+    return profit
+};
