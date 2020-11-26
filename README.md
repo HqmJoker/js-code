@@ -29,3 +29,20 @@
 var rate = 3
 "★★★★★☆☆☆☆☆".slice(5 - rate, 10 - rate)
 ```
+## 金钱格式化代码
+### 使用正则
+```
+var test1 = '1234567890'
+var format = test1.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+
+console.log(format) // 1,234,567,890
+```
+### 非正则
+```
+ function formatCash(str) {
+ return str.split('').reverse().reduce((prev, next, index) => {
+  return ((index % 3) ? next : (next + ',')) + prev
+ })
+}
+console.log(formatCash('1234567890')) // 1,234,567,890
+```
