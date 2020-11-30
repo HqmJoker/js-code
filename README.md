@@ -46,3 +46,16 @@ console.log(format) // 1,234,567,890
 }
 console.log(formatCash('1234567890')) // 1,234,567,890
 ```
+### css一行文本超出显示...
+```
+overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;
+```
+### css多行文本超出显示...
+```
+display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 3;  // 控制显示文本行数，3代表文本超出3行显示...
+overflow: hidden;
+```
