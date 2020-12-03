@@ -9,7 +9,7 @@ var countPrimes = function(n) {
     let result = 1;
     for(let i=3; i<n; i += 2){
         let flag = false;
-        for(let j=3; j<=i; j += 2){
+        for(let j=3; j<=Math.ceil(Math.sqrt(i)); j += 2){
             if(i !== j && i%j == 0){
                 flag = true;
                 break;
