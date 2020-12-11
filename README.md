@@ -59,3 +59,13 @@ display: -webkit-box;
 -webkit-line-clamp: 3;  // 控制显示文本行数，3代表文本超出3行显示...
 overflow: hidden;
 ```
+### 判断某年当月有多少天
+```
+/**
+ * ex : new Date(2020, 11, 0).getDate()  // 30
+ * ex : new Date(2020, 12, 0).getDate()  // 31
+ */
+function getMonthCountDay (year, month) {
+  return new Date(year, month, 0).getDate()
+}
+```
