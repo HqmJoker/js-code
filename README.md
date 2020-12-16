@@ -62,8 +62,8 @@ overflow: hidden;
 ### 判断某年当月有多少天
 ```
 /**
- * e p : new Date(2020, 11, 0).getDate()  // 30
- * e p : new Date(2020, 12, 0).getDate()  // 31
+ * e.g. : new Date(2020, 11, 0).getDate()  // 30
+ * e.g. : new Date(2020, 12, 0).getDate()  // 31
  */
 function getMonthCountDay (year, month) {
   return new Date(year, month, 0).getDate()
@@ -71,7 +71,7 @@ function getMonthCountDay (year, month) {
 ```
 ### 一键暗黑模式
 ```
-.dark-theme {
+html {
   transition: all 300ms;
   filter: invert(1) hue-rotate(180deg);
 }
