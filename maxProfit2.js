@@ -2,37 +2,24 @@
  * @param {number[]} prices
  * @param {number} fee
  * @return {number}
+ * f(i)表示第i天卖出股票获得的最大收益值
+ * f[i][0]表示第i天且当前手上没有股票时卖出股票获得的最大收益值
+ * f[i][1]表示第i天且当前手上有股票时卖出股票获得的最大收益值
+ * f[0][0] = 0,
+ * f[0][1] = -value[1],
+ * f[i][0] = max(f[i-1][0], f[i-1][1]+value[i]-free ),
+ * f[i][1] = max(f[i-1][0]-value[i], f[i-1][1]),
+ * f(i) = max(f[i][0], f[i][1]+value[i]-free)
  */
 var maxProfit = function(prices, fee) {
+    let profit = [ [ 0, -prices[0] ] ];
     let len = prices.length;
-    let result = [0];
-    let minBuyIn = prices[0];
-    let lastMinBuyIn = prices[0];
-    for(let i=1; i<len-1; i++) {
-        if(prices[i] > prices[i+1] && prices[i] - minBuyIn > fee) {
-            if(result[i-1] > 0 && prices[i] - lastMinBuyIn - fee > prices[i] - minBuyIn + result[i-1] - fee) {
-                result.push(prices[i] - lastMinBuyIn - fee);
-            }else{
-                result.push(prices[i] - minBuyIn + result[i-1] - fee);
-            }
-            lastMinBuyIn = minBuyIn;
-            minBuyIn = 50000;
-        }else {
-            result.push(result[i-1]);
-            if(minBuyIn > prices[i]) {
-                minBuyIn = prices[i];
-            }
-        }
+    for(let i=1; i<len;i ++) {
+        let state = [];
+        let profit0 = Math.max( profit[i-1][0], profit[i-1][1] + prices[i] - fee );
+        let profit1 = Math.max( profit[i-1][0] - prices[i], profit[i-1][1]);
+        state.push(profit0, profit1);
+        profit.push(state);
     }
-    // 最后一天需要额处理
-    if(minBuyIn !== 50000 && prices[len-1] - minBuyIn > fee) {
-        if(result[len-1-1] > 0 && prices[len-1] - lastMinBuyIn - fee > prices[len-1] - minBuyIn + result[len-1-1] - fee) {
-            result.push(prices[len-1] - lastMinBuyIn - fee);
-        }else{
-            result.push(prices[len-1] - minBuyIn + result[len-1-1] - fee);
-        }
-    }else{
-        result.push(result[len-1-1])
-    }
-    return result[len-1];
+    return Math.max(profit[len-1][0], profit[len-1][1]);
 };
