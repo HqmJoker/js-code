@@ -2,7 +2,6 @@
  * @param {string} s
  * @return {number[][]}
  * 
-"aaa"
  */
 var largeGroupPositions = function(s) {
     let result = [];
@@ -19,6 +18,9 @@ var largeGroupPositions = function(s) {
         }else {
             stask.push(s[i]);
         }
+    }
+    if(stask.length > 2) {
+        result.push([startIndex, s.length-1]);
     }
     return result;
 };
