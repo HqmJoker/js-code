@@ -8,3 +8,7 @@ var rotate = function(nums, k) {
         nums.unshift(nums.pop())
     }
 };
+// v2.0 空间换时间
+var rotate = function(nums, k) {
+    nums.splice(0, 0, ...nums.splice(nums.length-k, k))
+};
