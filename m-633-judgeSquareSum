@@ -1,0 +1,18 @@
+/**
+ * @param {number} c
+ * @return {boolean}
+ */
+var judgeSquareSum = function(c) {
+    let resultArr = {};
+    let i=0;
+    let iPower=i*i;
+    while(iPower <= c) {
+        iPower = i*i;
+        if(resultArr.hasOwnProperty(iPower) || c === 2*iPower) {
+            return true
+        }
+        resultArr[c - iPower] = iPower;
+        i++
+    }
+    return false
+};
